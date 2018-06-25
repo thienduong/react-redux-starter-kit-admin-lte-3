@@ -1,100 +1,102 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { showHideMenu } from './NavigationReducer'
 
 class Navigation extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
 ;
 
-  componentDidMount() {
-    let _this = this;
-    $(document).on('click', '.sidebar li a', function (e) {
-      debugger
-      //Get the clicked link and the next element
-      var $this = $(this);
-      var checkElement = $this.next();
-
-      //Check if the next element is a menu and is visible
-      if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible'))) {
-        //Close the menu
-        checkElement.slideUp(500, function () {
-          checkElement.removeClass('menu-open');
-          //Fix the layout in case the sidebar stretches over the height of the window
-          //_this.layout.fix();
-        });
-        checkElement.parent('li').removeClass('active');
-      }
-      //If the menu is not visible
-      else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {
-        //Get the parent menu
-        var parent = $this.parents('ul').first();
-        //Close all open menus within the parent
-        var ul = parent.find('ul:visible').slideUp(500);
-        //Remove the menu-open class from the parent
-        ul.removeClass('menu-open');
-        //Get the parent li
-        var parent_li = $this.parent('li');
-
-        //Open the target menu and add the menu-open class
-        checkElement.slideDown(500, function () {
-          //Add the class active to the parent li
-          checkElement.addClass('menu-open');
-          parent.find('li.active').removeClass('active');
-          parent_li.addClass('active');
-          //Fix the layout in case the sidebar stretches over the height of the window
-          _this.fix();
-        });
-      }
-      //if this isn't a link, prevent the page from being redirected
-      if (checkElement.is('.treeview-menu')) {
-        e.preventDefault();
-      }
-    });
-  }
-
-  fix() {
-    //Get window height and the wrapper height
-    var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight();
-    var window_height = $(window).height();
-    var sidebar_height = $('.sidebar').height();
-    //Set the min-height of the content and sidebar based on the
-    //the height of the document.
-    if ($('body').hasClass('fixed')) {
-      $('.content-wrapper, .right-side').css('min-height', window_height - $('.main-footer').outerHeight());
-    } else {
-      var postSetWidth;
-      if (window_height >= sidebar_height) {
-        $('.content-wrapper, .right-side').css('min-height', window_height - neg);
-        postSetWidth = window_height - neg;
-      } else {
-        $('.content-wrapper, .right-side').css('min-height', sidebar_height);
-        postSetWidth = sidebar_height;
-      }
-
-      //Fix for the control sidebar height
-      var controlSidebar = $('.control-sidebar');
-      if (typeof controlSidebar !== 'undefined') {
-        if (controlSidebar.height() > postSetWidth)
-          $('.content-wrapper, .right-side').css('min-height', controlSidebar.height());
-      }
-    }
-  };
+  // componentDidMount () {
+  //   let _this = this
+  //   $(document).on('click', '.sidebar li a', function (e) {
+  //     // Get the clicked link and the next element
+  //     var $this = $(this)
+  //     var checkElement = $this.next()
+  //
+  //     // Check if the next element is a menu and is visible
+  //     if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible'))) {
+  //       // Close the menu
+  //       checkElement.slideUp(500, function () {
+  //         checkElement.removeClass('menu-open')
+  //         // Fix the layout in case the sidebar stretches over the height of the window
+  //         // _this.layout.fix();
+  //       })
+  //       checkElement.parent('li').removeClass('active')
+  //     }
+  //     // If the menu is not visible
+  //     else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {
+  //       // Get the parent menu
+  //       var parent = $this.parents('ul').first()
+  //       // Close all open menus within the parent
+  //       var ul = parent.find('ul:visible').slideUp(500)
+  //       // Remove the menu-open class from the parent
+  //       ul.removeClass('menu-open')
+  //       // Get the parent li
+  //       var parent_li = $this.parent('li')
+  //
+  //       // Open the target menu and add the menu-open class
+  //       checkElement.slideDown(500, function () {
+  //         // Add the class active to the parent li
+  //         checkElement.addClass('menu-open')
+  //         parent.find('li.active').removeClass('active')
+  //         parent_li.addClass('active')
+  //         // Fix the layout in case the sidebar stretches over the height of the window
+  //         _this.fix()
+  //       })
+  //     }
+  //     // if this isn't a link, prevent the page from being redirected
+  //     if (checkElement.is('.treeview-menu')) {
+  //       e.preventDefault()
+  //     }
+  //   })
+  // }
+  //
+  // fix () {
+  //   // Get window height and the wrapper height
+  //   var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight()
+  //   var window_height = $(window).height()
+  //   var sidebar_height = $('.sidebar').height()
+  //   // Set the min-height of the content and sidebar based on the
+  //   // the height of the document.
+  //   if ($('body').hasClass('fixed')) {
+  //     $('.content-wrapper, .right-side').css('min-height', window_height - $('.main-footer').outerHeight())
+  //   } else {
+  //     var postSetWidth
+  //     if (window_height >= sidebar_height) {
+  //       $('.content-wrapper, .right-side').css('min-height', window_height - neg)
+  //       postSetWidth = window_height - neg
+  //     } else {
+  //       $('.content-wrapper, .right-side').css('min-height', sidebar_height)
+  //       postSetWidth = sidebar_height
+  //     }
+  //
+  //     // Fix for the control sidebar height
+  //     var controlSidebar = $('.control-sidebar')
+  //     if (typeof controlSidebar !== 'undefined') {
+  //       if (controlSidebar.height() > postSetWidth) { $('.content-wrapper, .right-side').css('min-height', controlSidebar.height()) }
+  //     }
+  //   }
+  // };
 
   render () {
+    const { dispatch } = this.props
+
     return (
       // <!-- Main Sidebar Container -->
       <aside className='main-sidebar sidebar-dark-primary elevation-4'>
-        {/*// <!-- Brand Logo -->*/}
+        {/* // <!-- Brand Logo --> */}
         <a href='index3.html' className='brand-link'>
           <img src='dist/img/AdminLTELogo.png' alt='AdminLTE Logo' className='brand-image img-circle elevation-3'
-               style={{ 'opacity': '.8' }} />
-            <span className='brand-text font-weight-light'>AdminLTE 3</span>
+            style={{ 'opacity': '.8' }} />
+          <span className='brand-text font-weight-light'>AdminLTE 3</span>
         </a>
 
-        {/*// <!-- Sidebar -->*/}
+        {/* // <!-- Sidebar --> */}
         <div className='sidebar'>
-          {/*// <!-- Sidebar user panel (optional) -->*/}
+          {/* // <!-- Sidebar user panel (optional) --> */}
           <div className='user-panel mt-3 pb-3 mb-3 d-flex'>
             <div className='image'>
               <img src='dist/img/user2-160x160.jpg' className='img-circle elevation-2' alt='User Image' />
@@ -104,34 +106,34 @@ class Navigation extends React.Component {
             </div>
           </div>
 
-          {/*// <!-- Sidebar Menu -->*/}
+          {/* // <!-- Sidebar Menu --> */}
           <nav className='mt-2'>
             <ul className='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'>
-              {/*// <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->*/}
-              <li className='nav-item has-treeview menu-open'>
-                <a href='#' className='nav-link active'>
-                  <i className='nav-icon fa fa-dashboard'></i>
+              {/* // <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library --> */}
+              <li className={'nav-item has-treeview ' + (this.props.loadMenu.isLoadMenu === false ? '' : 'menu-open')}>
+                <a className='nav-link active' onClick={() => dispatch(showHideMenu())}>
+                  <i className='nav-icon fa fa-dashboard' />
                   <p>
                     Dashboard
-                    <i className='right fa fa-angle-left'></i>
+                    <i className='right fa fa-angle-left' />
                   </p>
                 </a>
-                <ul className='nav nav-treeview'>
+                <ul className={'nav nav-treeview d' + (this.props.loadMenu.isLoadMenu === false ? '-none' : '-block')}>
                   <li className='nav-item'>
                     <a href='./index.html' className='nav-link active'>
-                      <i className='fa fa-circle-o nav-icon'></i>
+                      <i className='fa fa-circle-o nav-icon' />
                       <p>Dashboard v1</p>
                     </a>
                   </li>
                   <li className='nav-item'>
                     <a href='./index2.html' className='nav-link'>
-                      <i className='fa fa-circle-o nav-icon'></i>
+                      <i className='fa fa-circle-o nav-icon' />
                       <p>Dashboard v2</p>
                     </a>
                   </li>
                   <li className='nav-item'>
                     <a href='./index3.html' className='nav-link'>
-                      <i className='fa fa-circle-o nav-icon'></i>
+                      <i className='fa fa-circle-o nav-icon' />
                       <p>Dashboard v3</p>
                     </a>
                   </li>
@@ -139,11 +141,11 @@ class Navigation extends React.Component {
               </li>
             </ul>
           </nav>
-          {/*// <!-- /.sidebar-menu -->*/}
+          {/* // <!-- /.sidebar-menu --> */}
         </div>
-        {/*// <!-- /.sidebar -->*/}
+        {/* // <!-- /.sidebar --> */}
       </aside>
-    );
+    )
   };
 
   // render() {
@@ -321,4 +323,9 @@ class Navigation extends React.Component {
   // }
 }
 
-export default Navigation
+const mapStateToProps = (state) => ({
+
+  loadMenu : state.menu
+})
+
+export default connect(mapStateToProps)(Navigation)
