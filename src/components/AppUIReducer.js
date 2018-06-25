@@ -2,14 +2,24 @@
 // Constants
 // ------------------------------------
 export const SHOW_HIDE_MENU = 'SHOW_HIDE_MENU'
+export const MENU_COLLAPSE = 'MENU_COLLAPSE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
+
 export function showHideMenu () {
   return {
 
     type: SHOW_HIDE_MENU,
+
+  }
+}
+debugger
+export function menuCollapse () {
+  return {
+
+    type: MENU_COLLAPSE,
 
   }
 }
@@ -19,7 +29,8 @@ export function showHideMenu () {
 // ------------------------------------
 
 export const actions = {
-  showHideMenu
+  showHideMenu,
+  menuCollapse
 
 }
 
@@ -28,6 +39,7 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [SHOW_HIDE_MENU]: (state, action) => ({ ...state, isLoadMenu: !state.isLoadMenu }),
+  [MENU_COLLAPSE]: (state, action) => ({ ...state, isCollapse: !state.isCollapse })
 
 }
 
@@ -35,7 +47,9 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  isLoadMenu: false
+  isLoadMenu: false,
+  isCollapse: false,
+
 }
 
 export default function appUIReducer (state = initialState, action) {

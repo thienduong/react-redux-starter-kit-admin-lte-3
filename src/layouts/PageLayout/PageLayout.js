@@ -4,12 +4,12 @@ import Header from './Header.js'
 import Navigation from './Navigation.js'
 import PropTypes from 'prop-types'
 import './PageLayout.scss'
-
+debugger
 export const PageLayout = ({ children }) => (
   <div className='page-layout sidebar-mini'>
     <div id='dashboard-container'>
       <div className='wrapper'>
-        <Header />
+        <Header  />
         <Navigation />
         <div className='content-wrapper'>
           {children}
