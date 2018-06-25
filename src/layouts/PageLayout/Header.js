@@ -1,7 +1,6 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
-import PropTypes from 'prop-types'
-import {menuCollapse, showHideMenu} from '../../components/AppUIReducer'
+
+import { menuCollapse, menuControl } from '../../components/AppUIReducer'
 import { connect } from 'react-redux'
 
 class Header extends React.Component {
@@ -31,15 +30,17 @@ class Header extends React.Component {
   // };
 
   render () {
-
-    const {dispatch} = this.props
+    debugger
+    const { dispatch } = this.props
     return (
       // <!-- Navbar -->
       <nav className='main-header navbar navbar-expand bg-white navbar-light border-bottom'>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
-            <button className='nav-link' onClick={() => dispatch(menuCollapse())}><i className='fa fa-bars' /></button>
+            <a className='nav-link' onClick={() => dispatch(menuCollapse())}>
+              <i className='fa fa-bars' />
+            </a>
           </li>
           <li className='nav-item d-none d-sm-inline-block'>
             <a href='index3.html' className='nav-link'>Home</a>
@@ -149,7 +150,7 @@ class Header extends React.Component {
             </div>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' data-widget='control-sidebar' data-slide='true' href='#'><i
+            <a className='nav-link' onClick={() => dispatch(menuControl())}><i
               className='fa fa-th-large' /></a>
           </li>
         </ul>
@@ -159,9 +160,4 @@ class Header extends React.Component {
   };
 }
 
-const mapStateToProps = (state) => ({
-
-  menuCollapse : state.menu
-})
-
-export default connect(mapStateToProps)(Header)
+export default connect()(Header)

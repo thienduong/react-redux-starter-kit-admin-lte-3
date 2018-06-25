@@ -3,6 +3,7 @@
 // ------------------------------------
 export const SHOW_HIDE_MENU = 'SHOW_HIDE_MENU'
 export const MENU_COLLAPSE = 'MENU_COLLAPSE'
+export const MENU_CONTROL = 'MENU_CONTROL'
 
 // ------------------------------------
 // Actions
@@ -23,6 +24,13 @@ export function menuCollapse () {
 
   }
 }
+export function menuControl () {
+  return {
+
+    type: MENU_CONTROL,
+
+  }
+}
 
 // ------------------------------------
 // Actions
@@ -30,7 +38,8 @@ export function menuCollapse () {
 
 export const actions = {
   showHideMenu,
-  menuCollapse
+  menuCollapse,
+  menuControl
 
 }
 
@@ -39,7 +48,8 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [SHOW_HIDE_MENU]: (state, action) => ({ ...state, isLoadMenu: !state.isLoadMenu }),
-  [MENU_COLLAPSE]: (state, action) => ({ ...state, isCollapse: !state.isCollapse })
+  [MENU_COLLAPSE]: (state, action) => ({ ...state, isCollapse: !state.isCollapse }),
+  [MENU_CONTROL]: (state, action) => ({ ...state, isControl: !state.isControl })
 
 }
 
@@ -49,6 +59,7 @@ const ACTION_HANDLERS = {
 const initialState = {
   isLoadMenu: false,
   isCollapse: false,
+  isControl: false,
 
 }
 

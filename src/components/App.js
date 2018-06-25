@@ -15,11 +15,11 @@ class App extends React.Component {
   }
 
   render () {
-    debugger
     return (
       <Provider store={this.props.store}>
         <div style={{ height: '100%' }} className={'sidebar-mini ' +
-        (this.props.menuCollapse.isCollapse === false ? '' : 'sidebar-collapse')}>
+        (this.props.menuState.isCollapse === false ? '' : 'sidebar-collapse') +
+        (this.props.menuState.isControl === false ? '' : 'control-sidebar-slide-open')}>
           <Router history={browserHistory}  children={this.props.routes} />
           <Loading />
         </div>
@@ -29,9 +29,8 @@ class App extends React.Component {
 }
 const mapStateToProps = (state) => ({
 
-  menuCollapse : state.menu
+  menuState : state.menu
 })
 
 export default connect(mapStateToProps)(App)
-
 

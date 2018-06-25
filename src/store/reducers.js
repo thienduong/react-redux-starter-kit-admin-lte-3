@@ -11,7 +11,6 @@ export const makeRootReducer = (asyncReducers) => {
     location: locationReducer,
     loading: loadingReducer,
     menu: appUIReducer,
-
     app: appReducer,
     form: formReducer,
     signin: signinInReducer,
