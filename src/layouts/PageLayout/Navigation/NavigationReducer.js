@@ -1,16 +1,15 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const SHOW_MENU = 'SHOW_MENU'
-export const HIDE_MENU = 'HIDE_MENU'
+export const SHOW_HIDE_MENU = 'SHOW_HIDE_MENU'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function showMenu () {
+export function show_hideMenu () {
   return {
 
-    type: SHOW_MENU,
+    type: SHOW_HIDE_MENU,
 
   }
 }
@@ -18,22 +17,17 @@ export function showMenu () {
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function hideMenu () {
-  return {
-    type: HIDE_MENU
-  }
-}
 
 export const actions = {
-  showMenu,
-  hideMenu
+  show_hideMenu
+
 }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [SHOW_MENU]: (state, action) => ({ ...state, isloadmenu: !state.isloadmenu }),
+  [SHOW_HIDE_MENU]: (state, action) => ({ ...state, isLoadMenu: !state.isLoadMenu }),
 
 }
 
@@ -41,7 +35,7 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = {
-  isloadmenu: false
+  isLoadMenu: false
 }
 
 export default function navigationReducer (state = initialState, action) {

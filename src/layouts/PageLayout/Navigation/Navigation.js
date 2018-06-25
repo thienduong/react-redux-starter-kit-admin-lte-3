@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {show_hideMenu, showMenu} from './NavigationReducer'
+import { show_hideMenu } from './NavigationReducer'
 
 class Navigation extends React.Component {
   constructor (props) {
@@ -82,7 +82,7 @@ class Navigation extends React.Component {
   // };
 
   render () {
-    const {dispatch} = this.props
+    const { dispatch } = this.props
 
     return (
       // <!-- Main Sidebar Container -->
@@ -110,15 +110,15 @@ class Navigation extends React.Component {
           <nav className='mt-2'>
             <ul className='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'>
               {/* // <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library --> */}
-              <li className={'nav-item has-treeview ' + (this.props.loadmenu.isloadmenu === false ? '' : 'menu-open')}>
-                <a className='nav-link active' onClick={() => dispatch(showMenu())}>
+              <li className={'nav-item has-treeview ' + (this.props.loadmenu.isLoadMenu === false ? '' : 'menu-open')}>
+                <a className='nav-link active' onClick={() => dispatch(show_hideMenu())}>
                   <i className='nav-icon fa fa-dashboard' />
                   <p>
                     Dashboard
                     <i className='right fa fa-angle-left' />
                   </p>
                 </a>
-                <ul className={'nav nav-treeview d' + (this.props.loadmenu.isloadmenu === false ? '-none' : '-block')}>
+                <ul className={'nav nav-treeview d' + (this.props.loadmenu.isLoadMenu === false ? '-none' : '-block')}>
                   <li className='nav-item'>
                     <a href='./index.html' className='nav-link active'>
                       <i className='fa fa-circle-o nav-icon' />
