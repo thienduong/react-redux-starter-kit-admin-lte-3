@@ -6,7 +6,7 @@ export const SHOW_HIDE_MENU = 'SHOW_HIDE_MENU'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function show_hideMenu () {
+export function showHideMenu () {
   return {
 
     type: SHOW_HIDE_MENU,
@@ -19,7 +19,7 @@ export function show_hideMenu () {
 // ------------------------------------
 
 export const actions = {
-  show_hideMenu
+  showHideMenu
 
 }
 
