@@ -4,13 +4,13 @@ import loadingReducer from '../components/Loading/LoadingReducer'
 import appReducer from '../components/AppReducer'
 import { reducer as formReducer } from 'redux-form'
 import signinInReducer from '../routes/SignIn/modules/SignInReducer'
-import navigationReducer from '../layouts/PageLayout/Navigation/NavigationReducer'
+import appUIReducer from '../components/AppUIReducer'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     loading: loadingReducer,
-    menu: navigationReducer,
+    menu: appUIReducer,
     app: appReducer,
     form: formReducer,
     signin: signinInReducer,

@@ -38,7 +38,7 @@ const initialState = {
   isLoadMenu: false
 }
 
-export default function navigationReducer (state = initialState, action) {
+export default function appUIReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state

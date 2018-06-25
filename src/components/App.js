@@ -9,15 +9,15 @@ class App extends React.Component {
     store: PropTypes.object.isRequired,
     routes: PropTypes.array.isRequired,
   }
-  
+
   shouldComponentUpdate () {
     return false
   }
-  
+
   render () {
     return (
       <Provider store={this.props.store}>
-        <div style={{ height: '100%' }}>
+        <div style={{ height: '100%' }} className='sidebar-mini'>
           <Router history={browserHistory} children={this.props.routes} />
           <Loading />
         </div>
