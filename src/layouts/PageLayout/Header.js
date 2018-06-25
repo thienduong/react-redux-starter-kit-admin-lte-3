@@ -31,15 +31,15 @@ class Header extends React.Component {
   // };
 
   render () {
-    debugger
-    const dispatch = this.props
+
+    const {dispatch} = this.props
     return (
       // <!-- Navbar -->
       <nav className='main-header navbar navbar-expand bg-white navbar-light border-bottom'>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
-            <a className='nav-link' onClick={() => dispatch(menuCollapse())}><i className='fa fa-bars' /></a>
+            <button className='nav-link' onClick={() => dispatch(menuCollapse())}><i className='fa fa-bars' /></button>
           </li>
           <li className='nav-item d-none d-sm-inline-block'>
             <a href='index3.html' className='nav-link'>Home</a>
@@ -161,7 +161,7 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-  menuCollapse : state.menuCollapse
+  menuCollapse : state.menu
 })
 
 export default connect(mapStateToProps)(Header)

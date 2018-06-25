@@ -29,7 +29,7 @@ class App extends React.Component {
 }
 const mapStateToProps = (state) => ({
 
-  menuCollapse : state.menuCollapse
+  menuCollapse : state.menu
 })
 
 export default connect(mapStateToProps)(App)

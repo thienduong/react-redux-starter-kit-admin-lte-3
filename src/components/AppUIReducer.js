@@ -15,7 +15,7 @@ export function showHideMenu () {
 
   }
 }
-debugger
+
 export function menuCollapse () {
   return {
 
