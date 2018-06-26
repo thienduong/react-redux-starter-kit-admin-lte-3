@@ -5,6 +5,7 @@ import Navigation from './Navigation.js'
 import PropTypes from 'prop-types'
 import './PageLayout.scss'
 
+
 export const PageLayout = ({ children }) => (
   <div className='page-layout sidebar-mini'>
     <div id='dashboard-container'>
@@ -14,6 +15,7 @@ export const PageLayout = ({ children }) => (
         <div className='content-wrapper'>
           {children}
         </div>
+
       </div>
     </div>
   </div>

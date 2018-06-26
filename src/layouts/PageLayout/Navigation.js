@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { showHideMenu } from '../../components/AppUIReducer'
+import ControlSidebar from './ControlSidebar'
 
 class Navigation extends React.Component {
   constructor (props) {
@@ -82,7 +83,6 @@ class Navigation extends React.Component {
   // };
 
   render () {
-
     const { dispatch } = this.props
 
     return (
@@ -103,7 +103,7 @@ class Navigation extends React.Component {
               <img src='dist/img/user2-160x160.jpg' className='img-circle elevation-2' alt='User Image' />
             </div>
             <div className='info'>
-                <a href='#' className='d-block'>Alexander Pierce</a>
+              <a href='#' className='d-block'>Alexander Pierce</a>
             </div>
           </div>
 
@@ -144,8 +144,11 @@ class Navigation extends React.Component {
           </nav>
           {/* // <!-- /.sidebar-menu --> */}
         </div>
+
         {/* // <!-- /.sidebar --> */}
+
       </aside>
+
     )
   };
 
