@@ -30,7 +30,7 @@ class Header extends React.Component {
   // };
 
   render () {
-    debugger
+    // debugger
     const { dispatch } = this.props
     return (
       // <!-- Navbar -->
@@ -157,6 +157,10 @@ class Header extends React.Component {
       </nav>
       // <!-- navbar -->
     )
+
+    function test(){
+      debugger;
+    }
   };
 }
 

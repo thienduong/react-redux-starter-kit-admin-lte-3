@@ -82,6 +82,7 @@ class Navigation extends React.Component {
   // };
 
   render () {
+
     const { dispatch } = this.props
 
     return (
