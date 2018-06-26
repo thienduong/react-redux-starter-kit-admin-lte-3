@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { collapseMenu, controlMenu } from '../../components/AppUIReducer'
+import { expandCollapseMenu, controlMenu } from '../../components/AppUIReducer'
 import { connect } from 'react-redux'
 
 class Header extends React.Component {
@@ -38,7 +38,7 @@ class Header extends React.Component {
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
-            <a className='nav-link' onClick={() => dispatch(collapseMenu())}>
+            <a className='nav-link' onClick={() => dispatch(expandCollapseMenu())}>
               <i className='fa fa-bars' />
             </a>
           </li>

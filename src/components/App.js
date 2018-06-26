@@ -6,9 +6,9 @@ import Loading from '../components/Loading/Loading'
 
 class HelperWrapper extends React.Component {
   render () {
-    let { browserHistory, routes, menuControl } = this.props
-    let classControl = 'sidebar-mini ' + (menuControl.isCollapseMenu === false ? '' : 'sidebar-collapse') +
-        (menuControl.isControlSlidebar === false ? '' : 'control-sidebar-slide-open')
+    let { browserHistory, routes, appUIControl } = this.props
+    let classControl = 'sidebar-mini ' + (appUIControl.isCollapseMenu === false ? '' : 'sidebar-collapse') +
+        (appUIControl.isCollapseControlSlidebar === false ? '' : 'control-sidebar-slide-open')
     return (
       <div style={{ height: '100%' }} className={classControl}>
         <Router history={browserHistory} children={routes} />
@@ -20,7 +20,7 @@ class HelperWrapper extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    menuControl : state.appUIState
+    appUIControl : state.appUIState
   }
 }
 

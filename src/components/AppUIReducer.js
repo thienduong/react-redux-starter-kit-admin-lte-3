@@ -17,7 +17,7 @@ export function showHideMenu () {
   }
 }
 
-export function collapseMenu () {
+export function expandCollapseMenu () {
   return {
 
     type: COLLAPSE_MENU,
@@ -38,7 +38,7 @@ export function controlMenu () {
 
 export const actions = {
   showHideMenu,
-  collapseMenu,
+  expandCollapseMenu,
   controlMenu
 
 }
@@ -49,7 +49,7 @@ export const actions = {
 const ACTION_HANDLERS = {
   [SHOW_HIDE_MENU]: (state, action) => ({ ...state, isLoadMenu: !state.isLoadMenu }),
   [COLLAPSE_MENU]: (state, action) => ({ ...state, isCollapseMenu: !state.isCollapseMenu }),
-  [CONTROL_MENU]: (state, action) => ({ ...state, isControlSlidebar: !state.isControlSlidebar })
+  [CONTROL_MENU]: (state, action) => ({ ...state, isCollapseControlSlidebar: !state.isCollapseControlSlidebar })
 
 }
 
@@ -59,7 +59,7 @@ const ACTION_HANDLERS = {
 const initialState = {
   isLoadMenu: false,
   isCollapseMenu: false,
-  isControlSlidebar: false,
+  isCollapseControlSlidebar: false,
 
 }
 
