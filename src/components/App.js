@@ -6,11 +6,11 @@ import Loading from '../components/Loading/Loading'
 
 class HelperWrapper extends React.Component {
   render () {
-    let { browserHistory, routes, menuControl } = this.props;
+    let { browserHistory, routes, menuControl } = this.props
+    let classControl = 'sidebar-mini ' + (menuControl.isCollapseMenu === false ? '' : 'sidebar-collapse') +
+        (menuControl.isControlSlidebar === false ? '' : 'control-sidebar-slide-open')
     return (
-      <div style={{ height: '100%' }} className={'sidebar-mini ' +
-      (menuControl.isCollapseMenu === false ? '' : 'sidebar-collapse') +
-      (menuControl.isControlSlidebar === false ? '' : 'control-sidebar-slide-open')}>
+      <div style={{ height: '100%' }} className={classControl}>
         <Router history={browserHistory} children={routes} />
         <Loading />
       </div>
