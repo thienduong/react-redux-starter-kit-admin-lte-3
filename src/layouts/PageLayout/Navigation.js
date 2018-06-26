@@ -92,7 +92,7 @@ class Navigation extends React.Component {
 
   render () {
     const { dispatch, appUIState } = this.props
-    var classColor,classLogoColor
+    var classColor, classLogoColor
 
     if (appUIState.darkLightSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
       classColor = 'main-sidebar elevation-4 sidebar-dark-primary'
@@ -116,31 +116,20 @@ class Navigation extends React.Component {
       classColor = 'main-sidebar elevation-4 sidebar-light-warning'
     } else { classColor = 'main-sidebar sidebar-dark-primary elevation-4' }
 
-
-
-
-
-
-
-
-
-
-    if (appUIState.headerColor === BG_PRIMARY && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    if (appUIState.brandLogoSidebar === BG_PRIMARY) {
       classLogoColor = 'brand-link bg-primary'
-    } else if (appUIState.headerColor === BG_INFO && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_INFO) {
       classLogoColor = 'brand-link bg-info'
-    } else if (appUIState.headerColor === BG_SUCCESS && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_SUCCESS) {
       classLogoColor = 'brand-link bg-success'
-    } else if (appUIState.headerColor === BG_DANGER && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_DANGER) {
       classLogoColor = 'brand-link bg-danger'
-    } else if (appUIState.headerColor === BG_WARNING && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_WARNING) {
       classLogoColor = 'brand-link bg-warning'
-    } else if (appUIState.headerColor === BG_WHITE && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_WHITE) {
       classLogoColor = 'brand-link bg-white'
-    } else if (appUIState.headerColor === BG_GREY_LIGHT && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+    } else if (appUIState.brandLogoSidebar === BG_GREY_LIGHT) {
       classLogoColor = 'brand-link bg-gray-light'
-    }  else if (appUIState.headerColor === CLEAR_LOGO_COLOR && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS ) {
-      classLogoColor = 'brand-link'
     } else { classLogoColor = 'brand-link' }
     return (
       // <!-- Main Sidebar Container -->

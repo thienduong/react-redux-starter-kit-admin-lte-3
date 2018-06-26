@@ -40,26 +40,26 @@ class Header extends React.Component {
     const { dispatch, appUIState } = this.props
     var classColor
     if (appUIState.variantNavbar === BG_PRIMARY) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-primary'
+      classColor = 'main-header navbar navbar-expand navbar-dark bg-primary'
     } else if (appUIState.variantNavbar === BG_INFO) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-info'
+      classColor = 'main-header navbar navbar-expand navbar-dark bg-info'
     } else if (appUIState.variantNavbar === BG_SUCCESS) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-success'
+      classColor = 'main-header navbar navbar-expand navbar-dark bg-success'
     } else if (appUIState.variantNavbar === BG_DANGER) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-danger'
+      classColor = 'main-header navbar navbar-expand navbar-dark bg-danger'
     } else if (appUIState.variantNavbar === BG_WHITE) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-white'
+      classColor = 'main-header navbar navbar-expand navbar-light bg-white'
     } else if (appUIState.variantNavbar === BG_GREY_LIGHT) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-gray-light'
+      classColor = 'main-header navbar navbar-expand navbar-light bg-gray-light'
     } else if (appUIState.variantNavbar === BG_WARNING) {
-      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-warning'
-    } else { classColor = 'main-header navbar navbar-expand bg-white navbar-light border-bottom' }
+      classColor = 'main-header navbar navbar-expand navbar-light bg-warning'
+    } else { classColor = 'main-header navbar navbar-expand bg-white navbar-light' }
 
       // debugger
 
     return (
         // <!-- Navbar -->
-      <nav className={classColor}>
+      <nav className={classColor + (appUIState.checkBorder === true ? '' : ' border-bottom')}>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>

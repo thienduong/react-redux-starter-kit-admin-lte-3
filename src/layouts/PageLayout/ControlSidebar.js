@@ -7,7 +7,7 @@ import {
   BG_SUCCESS,
   BG_WARNING,
   BG_WHITE, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS, customDarkLightSidebar,
-  variantsNavbar
+  variantsNavbar, customColorLogo, checkNavbarBorder
 } from '../../components/AppUIReducer'
 
 class ControlSidebar extends React.Component {
@@ -44,7 +44,7 @@ class ControlSidebar extends React.Component {
                 onClick={() => dispatch(variantsNavbar(BG_GREY_LIGHT))} />
             </div>
           </div>
-          <div className='mb-4'><input type='checkbox' value='1' checked='checked'
+          <div className='mb-4'><input type='checkbox' checked='checked' onClick={() => dispatch(checkNavbarBorder())}
             className='mr-1' /><span>Navbar border</span>
           </div>
 
@@ -80,20 +80,20 @@ class ControlSidebar extends React.Component {
           <div className='d-flex' />
           <div className='d-flex flex-wrap mb-3'>
             <div className='bg-primary elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_PRIMARY))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_PRIMARY))} />
             <div className='bg-info elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_INFO))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_INFO))} />
             <div className='bg-success elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_SUCCESS))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_SUCCESS))} />
             <div className='bg-danger elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_DANGER))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_DANGER))} />
             <div className='bg-warning elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_WARNING))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_WARNING))} />
             <div className='bg-white elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_WHITE))} />
+              style={style} onClick={() => dispatch(customColorLogo(BG_WHITE))} />
             <div className='bg-gray-light elevation-2'
-              style={style} onClick={() => dispatch(variantsNavbar(BG_GREY_LIGHT))} />
-            <a onClick={() => dispatch(variantsNavbar(BG_PRIMARY))}>Clear</a></div>
+              style={style} onClick={() => dispatch(customColorLogo(BG_GREY_LIGHT))} />
+            <a onClick={() => dispatch(customColorLogo())}>Clear</a></div>
         </div>
       </aside>
 
