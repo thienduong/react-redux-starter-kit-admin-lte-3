@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { menuCollapse, menuControl } from '../../components/AppUIReducer'
+import { collapseMenu, controlMenu } from '../../components/AppUIReducer'
 import { connect } from 'react-redux'
 
 class Header extends React.Component {
@@ -38,7 +38,7 @@ class Header extends React.Component {
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
-            <a className='nav-link' onClick={() => dispatch(menuCollapse())}>
+            <a className='nav-link' onClick={() => dispatch(collapseMenu())}>
               <i className='fa fa-bars' />
             </a>
           </li>
@@ -55,7 +55,7 @@ class Header extends React.Component {
           <div className='input-group input-group-sm'>
             <input className='form-control form-control-navbar' type='search' placeholder='Search' aria-label='Search' />
             <div className='input-group-append'>
-              <button className='btn btn-navbar' type='submit' >
+              <button className='btn btn-navbar' type='submit'>
                 <i className='fa fa-search' />
               </button>
             </div>
@@ -150,18 +150,14 @@ class Header extends React.Component {
             </div>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' onClick={() => dispatch(menuControl())}><i
+            <a className='nav-link' onClick={() => dispatch(controlMenu())}><i
               className='fa fa-th-large' /></a>
           </li>
         </ul>
       </nav>
       // <!-- navbar -->
     )
-
-    function test(){
-      debugger;
-    }
-  };
+  }
 }
 
 export default connect()(Header)

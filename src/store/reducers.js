@@ -10,7 +10,7 @@ export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     location: locationReducer,
     loading: loadingReducer,
-    menu: appUIReducer,
+    appUIState: appUIReducer,
     app: appReducer,
     form: formReducer,
     signin: signinInReducer,

@@ -326,7 +326,7 @@ class Navigation extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-  loadMenu : state.menu
+  loadMenu : state.appUIState
 })
 
 export default connect(mapStateToProps)(Navigation)
