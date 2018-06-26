@@ -7,9 +7,9 @@ import ControlSidebar from '../layouts/PageLayout/ControlSidebar'
 
 class HelperWrapper extends React.Component {
   render () {
-    let { browserHistory, routes, appUIControl } = this.props
-    let classControl = 'sidebar-mini ' + (appUIControl.isCollapseMenu === false ? '' : 'sidebar-collapse ') +
-        (appUIControl.isCollapseControlSlidebar === false ? '' : 'control-sidebar-slide-open')
+    let { browserHistory, routes, appUIState } = this.props
+    let classControl = 'sidebar-mini ' + (appUIState.isCollapseMenu === false ? '' : 'sidebar-collapse ') +
+        (appUIState.isCollapseControlSlidebar === false ? '' : 'control-sidebar-slide-open')
     return (
       <div style={{ height: '100%' }} className={classControl}>
         <Router history={browserHistory} children={routes} />
@@ -22,7 +22,7 @@ class HelperWrapper extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    appUIControl : state.appUIState
+    appUIState : state.appUIState
   }
 }
 

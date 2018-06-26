@@ -1,6 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { showHideMenu } from '../../components/AppUIReducer'
+import {
+  BG_DANGER,
+  BG_GREY_LIGHT,
+  BG_INFO,
+  BG_PRIMARY,
+  BG_SUCCESS, BG_WARNING,
+  BG_WHITE, CLEAR_LOGO_COLOR, CUSTOM_BRANDLOGO_VARIANTS, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS,
+  showHideMenu
+} from '../../components/AppUIReducer'
 import ControlSidebar from './ControlSidebar'
 
 class Navigation extends React.Component {
@@ -83,13 +91,62 @@ class Navigation extends React.Component {
   // };
 
   render () {
-    const { dispatch } = this.props
+    const { dispatch, appUIState } = this.props
+    var classColor,classLogoColor
 
+    if (appUIState.darkLightSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-dark-primary'
+    } else if (appUIState.darkLightSidebar === BG_INFO && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-dark-info'
+    } else if (appUIState.darkLightSidebar === BG_SUCCESS && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-dark-success'
+    } else if (appUIState.darkLightSidebar === BG_DANGER && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-dark-danger'
+    } else if (appUIState.darkLightSidebar === BG_WARNING && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-dark-warning'
+    } else if (appUIState.darkLightSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-light-primary'
+    } else if (appUIState.darkLightSidebar === BG_INFO && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-light-info'
+    } else if (appUIState.darkLightSidebar === BG_SUCCESS && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-light-success'
+    } else if (appUIState.darkLightSidebar === BG_DANGER && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-light-danger'
+    } else if (appUIState.darkLightSidebar === BG_WARNING && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor = 'main-sidebar elevation-4 sidebar-light-warning'
+    } else { classColor = 'main-sidebar sidebar-dark-primary elevation-4' }
+
+
+
+
+
+
+
+
+
+
+    if (appUIState.headerColor === BG_PRIMARY && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-primary'
+    } else if (appUIState.headerColor === BG_INFO && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-info'
+    } else if (appUIState.headerColor === BG_SUCCESS && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-success'
+    } else if (appUIState.headerColor === BG_DANGER && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-danger'
+    } else if (appUIState.headerColor === BG_WARNING && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-warning'
+    } else if (appUIState.headerColor === BG_WHITE && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-white'
+    } else if (appUIState.headerColor === BG_GREY_LIGHT && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS) {
+      classLogoColor = 'brand-link bg-gray-light'
+    }  else if (appUIState.headerColor === CLEAR_LOGO_COLOR && appUIState.typeCustom === CUSTOM_BRANDLOGO_VARIANTS ) {
+      classLogoColor = 'brand-link'
+    } else { classLogoColor = 'brand-link' }
     return (
       // <!-- Main Sidebar Container -->
-      <aside className='main-sidebar sidebar-dark-primary elevation-4'>
+      <aside className={classColor}>
         {/* // <!-- Brand Logo --> */}
-        <a href='index3.html' className='brand-link'>
+        <a href='index3.html' className={classLogoColor}>
           <img src='dist/img/AdminLTELogo.png' alt='AdminLTE Logo' className='brand-image img-circle elevation-3'
             style={{ 'opacity': '.8' }} />
           <span className='brand-text font-weight-light'>AdminLTE 3</span>
@@ -111,7 +168,7 @@ class Navigation extends React.Component {
           <nav className='mt-2'>
             <ul className='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'>
               {/* // <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library --> */}
-              <li className={'nav-item has-treeview ' + (this.props.loadMenu.isLoadMenu === false ? '' : 'menu-open')}>
+              <li className={'nav-item has-treeview ' + (appUIState.isLoadMenu === false ? '' : 'menu-open')}>
                 <a className='nav-link active' onClick={() => dispatch(showHideMenu())}>
                   <i className='nav-icon fa fa-dashboard' />
                   <p>
@@ -119,7 +176,7 @@ class Navigation extends React.Component {
                     <i className='right fa fa-angle-left' />
                   </p>
                 </a>
-                <ul className={'nav nav-treeview d' + (this.props.loadMenu.isLoadMenu === false ? '-none' : '-block')}>
+                <ul className={'nav nav-treeview d' + (appUIState.isLoadMenu === false ? '-none' : '-block')}>
                   <li className='nav-item'>
                     <a href='./index.html' className='nav-link active'>
                       <i className='fa fa-circle-o nav-icon' />
@@ -329,7 +386,7 @@ class Navigation extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-  loadMenu : state.appUIState
+  appUIState : state.appUIState
 })
 
 export default connect(mapStateToProps)(Navigation)

@@ -1,6 +1,13 @@
 import React from 'react'
 
-import { expandCollapseMenu, controlMenu } from '../../components/AppUIReducer'
+import {
+  expandCollapseMenu,
+  controlMenu,
+  BG_PRIMARY,
+  BG_INFO,
+  BG_SUCCESS,
+  BG_DANGER, BG_WHITE, BG_GREY_LIGHT, BG_WARNING
+} from '../../components/AppUIReducer'
 import { connect } from 'react-redux'
 
 class Header extends React.Component {
@@ -30,11 +37,29 @@ class Header extends React.Component {
   // };
 
   render () {
-    // debugger
-    const { dispatch } = this.props
+    const { dispatch, appUIState } = this.props
+    var classColor
+    if (appUIState.variantNavbar === BG_PRIMARY) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-primary'
+    } else if (appUIState.variantNavbar === BG_INFO) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-info'
+    } else if (appUIState.variantNavbar === BG_SUCCESS) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-success'
+    } else if (appUIState.variantNavbar === BG_DANGER) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-dark bg-danger'
+    } else if (appUIState.variantNavbar === BG_WHITE) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-white'
+    } else if (appUIState.variantNavbar === BG_GREY_LIGHT) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-gray-light'
+    } else if (appUIState.variantNavbar === BG_WARNING) {
+      classColor = 'main-header navbar navbar-expand border-bottom navbar-light bg-warning'
+    } else { classColor = 'main-header navbar navbar-expand bg-white navbar-light border-bottom' }
+
+      // debugger
+
     return (
-      // <!-- Navbar -->
-      <nav className='main-header navbar navbar-expand bg-white navbar-light border-bottom'>
+        // <!-- Navbar -->
+      <nav className={classColor}>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
@@ -53,7 +78,8 @@ class Header extends React.Component {
         {/* // <!-- SEARCH FORM --> */}
         <form className='form-inline ml-3'>
           <div className='input-group input-group-sm'>
-            <input className='form-control form-control-navbar' type='search' placeholder='Search' aria-label='Search' />
+            <input className='form-control form-control-navbar' type='search' placeholder='Search'
+              aria-label='Search' />
             <div className='input-group-append'>
               <button className='btn btn-navbar' type='submit'>
                 <i className='fa fa-search' />
@@ -77,7 +103,7 @@ class Header extends React.Component {
                   <img src='dist/img/user1-128x128.jpg' alt='User Avatar' className='img-size-50 mr-3 img-circle' />
                   <div className='media-body'>
                     <h3 className='dropdown-item-title'>
-                      Brad Diesel
+                        Brad Diesel
                       <span className='float-right text-sm text-danger'><i className='fa fa-star' /></span>
                     </h3>
                     <p className='text-sm'>Call me whenever you can...</p>
@@ -93,7 +119,7 @@ class Header extends React.Component {
                   <img src='dist/img/user8-128x128.jpg' alt='User Avatar' className='img-size-50 img-circle mr-3' />
                   <div className='media-body'>
                     <h3 className='dropdown-item-title'>
-                      John Pierce
+                        John Pierce
                       <span className='float-right text-sm text-muted'><i className='fa fa-star' /></span>
                     </h3>
                     <p className='text-sm'>I got your message bro</p>
@@ -109,7 +135,7 @@ class Header extends React.Component {
                   <img src='dist/img/user3-128x128.jpg' alt='User Avatar' className='img-size-50 img-circle mr-3' />
                   <div className='media-body'>
                     <h3 className='dropdown-item-title'>
-                      Nora Silvester
+                        Nora Silvester
                       <span className='float-right text-sm text-warning'><i className='fa fa-star' /></span>
                     </h3>
                     <p className='text-sm'>The subject goes here</p>
@@ -155,9 +181,13 @@ class Header extends React.Component {
           </li>
         </ul>
       </nav>
-      // <!-- navbar -->
-    )
+        // <!-- navbar -->
+      )
   }
-}
+  }
 
-export default connect()(Header)
+const mapStateToProps = (state) => ({
+
+  appUIState : state.appUIState
+})
+export default connect(mapStateToProps)(Header)
