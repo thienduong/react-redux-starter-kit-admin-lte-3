@@ -5,9 +5,15 @@ import {
   BG_GREY_LIGHT,
   BG_INFO,
   BG_PRIMARY,
-  BG_SUCCESS, BG_WARNING,
-  BG_WHITE, CLEAR_LOGO_COLOR, CUSTOM_BRANDLOGO_VARIANTS, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS,
-  showHideMenu
+  BG_SUCCESS,
+  BG_WARNING,
+  BG_WHITE, CHARTS,
+  CLEAR_LOGO_COLOR,
+  CUSTOM_BRANDLOGO_VARIANTS,
+  CUSTOM_DARKSIDEBAR_VARIANTS,
+  CUSTOM_LIGHTSIDEBAR_VARIANTS,
+  DASHBOARD, EXTRAS, MAILBOX, PAGES, FORMS,
+  showHideMenu, TABLES, UI_ELEMENTS
 } from '../../components/AppUIReducer'
 import ControlSidebar from './ControlSidebar'
 
@@ -94,8 +100,22 @@ class Navigation extends React.Component {
     const { dispatch, appUIState } = this.props
     var classColor = 'main-sidebar elevation-4 '
     var classLogoColor = 'brand-link '
-    var classNameTreeView = 'nav-item has-treeview ' + (appUIState.isLoadMenu === false ? '' : 'menu-open')
-    var classNameDisplay = 'nav nav-treeview d' + (appUIState.isLoadMenu === false ? '-none' : '-block')
+    var classNameTreeViewDasboard = 'nav-item has-treeview ' + (appUIState.dasboard === false ? '' : 'menu-open')
+    var classNameDisplayDasboard = 'nav nav-treeview d' + (appUIState.dasboard === false ? '-none' : '-block')
+    var classNameTreeViewCharts = 'nav-item has-treeview ' + (appUIState.charts === false ? '' : 'menu-open')
+    var classNameDisplayCharts = 'nav nav-treeview d' + (appUIState.charts === false ? '-none' : '-block')
+    var classNameTreeViewUIElements = 'nav-item has-treeview ' + (appUIState.uiElements === false ? '' : 'menu-open')
+    var classNameDisplayUIElements = 'nav nav-treeview d' + (appUIState.uiElements === false ? '-none' : '-block')
+    var classNameTreeViewForms = 'nav-item has-treeview ' + (appUIState.forms === false ? '' : 'menu-open')
+    var classNameDisplayForms = 'nav nav-treeview d' + (appUIState.forms === false ? '-none' : '-block')
+    var classNameTreeViewTables = 'nav-item has-treeview ' + (appUIState.tables === false ? '' : 'menu-open')
+    var classNameDisplayTables = 'nav nav-treeview d' + (appUIState.tables === false ? '-none' : '-block')
+    var classNameTreeViewMailBox = 'nav-item has-treeview ' + (appUIState.mailbox === false ? '' : 'menu-open')
+    var classNameDisplayMailBox = 'nav nav-treeview d' + (appUIState.mailbox === false ? '-none' : '-block')
+    var classNameTreeViewPages = 'nav-item has-treeview ' + (appUIState.pages === false ? '' : 'menu-open')
+    var classNameDisplayPages = 'nav nav-treeview d' + (appUIState.pages === false ? '-none' : '-block')
+    var classNameTreeViewExtras = 'nav-item has-treeview ' + (appUIState.extras === false ? '' : 'menu-open')
+    var classNameDisplayExtras = 'nav nav-treeview d' + (appUIState.extras === false ? '-none' : '-block')
 
     if (appUIState.darkLightColorSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
       classColor += 'sidebar-dark-primary'
@@ -160,15 +180,15 @@ class Navigation extends React.Component {
           <nav className='mt-2'>
             <ul className='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'>
               {/* // <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library --> */}
-              <li className={classNameTreeView}>
-                <a className='nav-link active' onClick={() => dispatch(showHideMenu())}>
+              <li className={classNameTreeViewDasboard}>
+                <a className='nav-link active' onClick={() => dispatch(showHideMenu(DASHBOARD))}>
                   <i className='nav-icon fa fa-dashboard' />
                   <p>
                     Dashboard
                     <i className='right fa fa-angle-left' />
                   </p>
                 </a>
-                <ul className={classNameDisplay}>
+                <ul className={classNameDisplayDasboard}>
                   <li className='nav-item'>
                     <a href='./index.html' className='nav-link active'>
                       <i className='fa fa-circle-o nav-icon' />
@@ -188,6 +208,272 @@ class Navigation extends React.Component {
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li className='nav-item'>
+                <a href='pages/widgets.html' className='nav-link' >
+                  <i className='nav-icon fa fa-th' />
+                  <p>
+                    Widgets
+                    <span className='right badge badge-danger'>New</span>
+                  </p>
+                </a>
+              </li>
+              <li className={classNameTreeViewCharts}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(CHARTS))}>
+                  <i className='nav-icon fa fa-pie-chart' />
+                  <p>
+                    Charts
+                    <i className='right fa fa-angle-left' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayCharts}>
+                  <li className='nav-item'>
+                    <a href='pages/charts/chartjs.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>ChartJS</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/charts/flot.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Flot</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/charts/inline.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Inline</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className={classNameTreeViewUIElements}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(UI_ELEMENTS))}>
+                  <i className='nav-icon fa fa-tree' />
+                  <p>
+                    UI Elements
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayUIElements}>
+                  <li className='nav-item'>
+                    <a href='pages/UI/general.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>General</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/UI/icons.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Icons</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/UI/buttons.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Buttons</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/UI/sliders.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Sliders</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className={classNameTreeViewForms}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(FORMS))}>
+                  <i className='nav-icon fa fa-edit' />
+                  <p>
+                    Forms
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayForms}>
+                  <li className='nav-item'>
+                    <a href='pages/forms/general.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>General Elements</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/forms/advanced.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Advanced Elements</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/forms/editors.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Editors</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className={classNameTreeViewTables}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(TABLES))}>
+                  <i className='nav-icon fa fa-table' />
+                  <p>
+                    Tables
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayTables}>
+                  <li className='nav-item'>
+                    <a href='pages/tables/simple.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Simple Tables</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/tables/data.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Data Tables</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className='nav-header'>EXAMPLES</li>
+              <li className='nav-item'>
+                <a href='pages/calendar.html' className='nav-link'>
+                  <i className='nav-icon fa fa-calendar' />
+                  <p>
+                    Calendar
+                    <span className='badge badge-info right'>2</span>
+                  </p>
+                </a>
+              </li>
+              <li className={classNameTreeViewMailBox}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(MAILBOX))}>
+                  <i className='nav-icon fa fa-envelope-o' />
+                  <p>
+                    Mailbox
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayMailBox}>
+                  <li className='nav-item'>
+                    <a href='pages/mailbox/mailbox.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Inbox</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/mailbox/compose.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Compose</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/mailbox/read-mail.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Read</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className={classNameTreeViewPages}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(PAGES))}>
+                  <i className='nav-icon fa fa-book' />
+                  <p>
+                    Pages
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayPages}>
+                  <li className='nav-item'>
+                    <a href='pages/examples/invoice.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Invoice</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/profile.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Profile</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/login.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Login</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/register.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Register</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/lockscreen.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Lockscreen</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className={classNameTreeViewExtras}>
+                <a href='#' className='nav-link' onClick={() => dispatch(showHideMenu(EXTRAS))}>
+                  <i className='nav-icon fa fa-plus-square-o' />
+                  <p>
+                    Extras
+                    <i className='fa fa-angle-left right' />
+                  </p>
+                </a>
+                <ul className={classNameDisplayExtras}>
+                  <li className='nav-item'>
+                    <a href='pages/examples/404.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Error 404</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/500.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Error 500</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='pages/examples/blank.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Blank Page</p>
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a href='starter.html' className='nav-link'>
+                      <i className='fa fa-circle-o nav-icon' />
+                      <p>Starter Page</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className='nav-header'>MISCELLANEOUS</li>
+              <li className='nav-item'>
+                <a href='https://adminlte.io/docs' className='nav-link'>
+                  <i className='nav-icon fa fa-file' />
+                  <p>Documentation</p>
+                </a>
+              </li>
+              <li className='nav-header'>LABELS</li>
+              <li className='nav-item'>
+                <a href='#' className='nav-link'>
+                  <i className='nav-icon fa fa-circle-o text-danger' />
+                  <p className='text'>Important</p>
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a href='#' className='nav-link'>
+                  <i className='nav-icon fa fa-circle-o text-warning' />
+                  <p>Warning</p>
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a href='#' className='nav-link'>
+                  <i className='nav-icon fa fa-circle-o text-info' />
+                  <p>Informational</p>
+                </a>
               </li>
             </ul>
           </nav>

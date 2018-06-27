@@ -12,60 +12,80 @@ export const BG_DANGER = 'BG_DANGER'
 export const BG_WARNING = 'BG_WARNING'
 export const BG_WHITE = 'BG_WHITE'
 export const BG_GREY_LIGHT = 'BG_GREY_LIGHT'
-
 export const CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS = 'CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS'
 export const CUSTOM_LIGHTSIDEBAR_VARIANTS = 'CUSTOM_LIGHTSIDEBAR_VARIANTS'
 export const CUSTOM_DARKSIDEBAR_VARIANTS = 'CUSTOM_DARKSIDEBAR_VARIANTS'
 export const CUSTOM_BRANDLOGO_VARIANTS = 'CUSTOM_BRANDLOGO_VARIANTS'
 export const CHECK_NAVBAR_BORDER = 'CHECK_NAVBAR_BORDER'
+export const DASHBOARD = 'DASHBOARD'
+export const CHARTS = 'CHARTS'
+export const UI_ELEMENTS = 'UI_ELEMENTS'
+export const FORMS = 'FORMS'
+export const TABLES = 'TABLES'
+export const MAILBOX = 'MAILBOX'
+export const PAGES = 'PAGES'
+export const EXTRAS = 'EXTRAS'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export function showHideMenu () {
+export function showHideMenu (typeLoadMenu) {
+  debugger
   return {
+
     type: SHOW_HIDE_MENU,
+    typeLoadMenu
+
   }
 }
 
 export function expandCollapseMenu () {
   return {
+
     type: COLLAPSE_MENU,
+
   }
 }
-
 export function controlMenu () {
   return {
+
     type: CONTROL_MENU,
+
   }
 }
 
 export function variantsNavbar (variantNavbar) {
   return {
+
     type: NAVBAR_VARIANTS,
     variantNavbar
 
   }
 }
-export function customColorLogo (brandLogoColorSidebar) {
+export function customColorLogo (brandLogoSidebar) {
   return {
+
     type: CUSTOM_BRANDLOGO_VARIANTS,
-    brandLogoColorSidebar
+    brandLogoSidebar
+
   }
 }
-
 export function checkNavbarBorder () {
+  debugger
   return {
+
     type: CHECK_NAVBAR_BORDER,
+
   }
 }
-
-export function customDarkLightColorSidebar (darkLightColorSidebar, typeCustom) {
+export function customDarkLightSidebar (darkLightSidebar, typeCustom) {
   return {
+
     type: CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS,
-    darkLightColorSidebar,
+    darkLightSidebar,
     typeCustom
+
   }
 }
 
@@ -78,7 +98,7 @@ export const actions = {
   expandCollapseMenu,
   controlMenu,
   variantsNavbar,
-  customDarkLightColorSidebar,
+  customDarkLightSidebar,
   customColorLogo,
   checkNavbarBorder
 
@@ -88,28 +108,62 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [SHOW_HIDE_MENU]: (state, action) => ({ ...state, isLoadMenu: !state.isLoadMenu }),
   [COLLAPSE_MENU]: (state, action) => ({ ...state, isCollapseMenu: !state.isCollapseMenu }),
   [CONTROL_MENU]: (state, action) => ({ ...state, isCollapseControlSlidebar: !state.isCollapseControlSlidebar }),
   [NAVBAR_VARIANTS]: (state, action) => ({ ...state, variantNavbar: action.variantNavbar }),
-  [CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS]: (state, action) => ({ ...state, darkLightColorSidebar: action.darkLightColorSidebar, typeCustom: action.typeCustom }),
-  [CUSTOM_BRANDLOGO_VARIANTS]: (state, action) => ({ ...state, brandLogoColorSidebar: action.brandLogoColorSidebar }),
-  [CHECK_NAVBAR_BORDER]: (state, action) => ({ ...state, checkBorder: !state.checkBorder })
+  [CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS]: (state, action) => ({ ...state, darkLightSidebar: action.darkLightSidebar, typeCustom: action.typeCustom }),
+  [CUSTOM_BRANDLOGO_VARIANTS]: (state, action) => ({ ...state, brandLogoSidebar: action.brandLogoSidebar }),
+  [CHECK_NAVBAR_BORDER]: (state, action) => ({ ...state, checkBorder: !state.checkBorder }),
+  [SHOW_HIDE_MENU]: function (state, action) {
+    debugger
 
+    if (action.typeLoadMenu === DASHBOARD) {
+      state.dasboard = !state.dasboard
+      return { ...state }
+    } else if (action.typeLoadMenu === CHARTS) {
+      state.charts = !state.charts
+      return { ...state }
+    } else if (action.typeLoadMenu === UI_ELEMENTS) {
+      state.uiElements = !state.uiElements
+      return { ...state }
+    } else if (action.typeLoadMenu === FORMS) {
+      state.forms = !state.forms
+      return { ...state }
+    } else if (action.typeLoadMenu === TABLES) {
+      state.tables = !state.tables
+      return { ...state }
+    } else if (action.typeLoadMenu === MAILBOX) {
+      state.mailbox = !state.mailbox
+      return { ...state }
+    } else if (action.typeLoadMenu === PAGES) {
+      state.pages = !state.pages
+      return { ...state }
+    } else if (action.typeLoadMenu === EXTRAS) {
+      state.extras = !state.extras
+      return { ...state }
+    } else return { ...state }
+  }
 }
-
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = {
-  isLoadMenu: false,
+  dasboard: false,
+  charts:false,
+  uiElements:false,
+  forms: false,
+  tables:false,
+  mailbox:false,
+  pages:false,
+  extras:false,
   isCollapseMenu: false,
   isCollapseControlSlidebar: false,
   variantNavbar: null,
-  darkLightColorSidebar: null,
-  brandLogoColorSidebar: null,
+  darkLightSidebar: null,
+  brandLogoSidebar: null,
   checkBorder: false,
-  typeCustom : null
+  typeCustom : null,
+  typeLoadMenu: null
 
 }
 
