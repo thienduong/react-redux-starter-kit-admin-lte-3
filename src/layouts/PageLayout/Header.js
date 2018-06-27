@@ -38,28 +38,32 @@ class Header extends React.Component {
 
   render () {
     const { dispatch, appUIState } = this.props
-    var classColor
+    var classColor = 'main-header navbar navbar-expand '
+
     if (appUIState.variantNavbar === BG_PRIMARY) {
-      classColor = 'main-header navbar navbar-expand navbar-dark bg-primary'
+      classColor += 'navbar-dark bg-primary'
     } else if (appUIState.variantNavbar === BG_INFO) {
-      classColor = 'main-header navbar navbar-expand navbar-dark bg-info'
+      classColor += 'navbar-dark bg-info'
     } else if (appUIState.variantNavbar === BG_SUCCESS) {
-      classColor = 'main-header navbar navbar-expand navbar-dark bg-success'
+      classColor += 'navbar-dark bg-success'
     } else if (appUIState.variantNavbar === BG_DANGER) {
-      classColor = 'main-header navbar navbar-expand navbar-dark bg-danger'
+      classColor += 'navbar-dark bg-danger'
     } else if (appUIState.variantNavbar === BG_WHITE) {
-      classColor = 'main-header navbar navbar-expand navbar-light bg-white'
+      classColor += 'navbar-light bg-white'
     } else if (appUIState.variantNavbar === BG_GREY_LIGHT) {
-      classColor = 'main-header navbar navbar-expand navbar-light bg-gray-light'
+      classColor += 'navbar-light bg-gray-light'
     } else if (appUIState.variantNavbar === BG_WARNING) {
-      classColor = 'main-header navbar navbar-expand navbar-light bg-warning'
-    } else { classColor = 'main-header navbar navbar-expand bg-white navbar-light' }
+      classColor += 'navbar-light bg-warning'
+    } else { classColor += 'bg-white navbar-light' }
+
+    classColor += (appUIState.checkBorder === true ? '' : ' border-bottom')
+
 
       // debugger
 
     return (
         // <!-- Navbar -->
-      <nav className={classColor + (appUIState.checkBorder === true ? '' : ' border-bottom')}>
+      <nav className={classColor}>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>

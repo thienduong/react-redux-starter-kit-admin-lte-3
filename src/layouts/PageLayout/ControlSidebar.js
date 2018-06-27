@@ -6,7 +6,7 @@ import {
   BG_PRIMARY,
   BG_SUCCESS,
   BG_WARNING,
-  BG_WHITE, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS, customDarkLightSidebar,
+  BG_WHITE, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS, customDarkLightColorSidebar,
   variantsNavbar, customColorLogo, checkNavbarBorder
 } from '../../components/AppUIReducer'
 
@@ -16,7 +16,6 @@ class ControlSidebar extends React.Component {
   }
 
   render () {
-    debugger
     const { dispatch } = this.props
     let style = { width:'40px', height: '20px', borderRadius: '25px', marginRight: '10px', marginBottom: '10px', opacity: '0.8', cursor: 'pointer' }
     return (
@@ -52,29 +51,29 @@ class ControlSidebar extends React.Component {
           <div className='d-flex' />
           <div className='d-flex flex-wrap mb-3'>
             <div className='bg-primary elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_PRIMARY, CUSTOM_DARKSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_PRIMARY, CUSTOM_DARKSIDEBAR_VARIANTS))} />
             <div className='bg-warning elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_WARNING, CUSTOM_DARKSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_WARNING, CUSTOM_DARKSIDEBAR_VARIANTS))} />
             <div className='bg-info elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_INFO, CUSTOM_DARKSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_INFO, CUSTOM_DARKSIDEBAR_VARIANTS))} />
             <div className='bg-danger elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_DANGER, CUSTOM_DARKSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_DANGER, CUSTOM_DARKSIDEBAR_VARIANTS))} />
             <div className='bg-success elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_SUCCESS, CUSTOM_DARKSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_SUCCESS, CUSTOM_DARKSIDEBAR_VARIANTS))} />
           </div>
           <h6>Light Sidebar Variants</h6>
           <div className='d-flex' />
           <div className='d-flex flex-wrap mb-3'>
             <div className='bg-primary elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_PRIMARY, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_PRIMARY, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
             <div className='bg-warning elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_WARNING, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_WARNING, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
             <div className='bg-info elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_INFO, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_INFO, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
             <div className='bg-danger elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_DANGER, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_DANGER, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
             <div className='bg-success elevation-2' style={style}
-              onClick={() => dispatch(customDarkLightSidebar(BG_SUCCESS, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
+              onClick={() => dispatch(customDarkLightColorSidebar(BG_SUCCESS, CUSTOM_LIGHTSIDEBAR_VARIANTS))} />
           </div>
           <h6>Brand Logo Variants</h6>
           <div className='d-flex' />
