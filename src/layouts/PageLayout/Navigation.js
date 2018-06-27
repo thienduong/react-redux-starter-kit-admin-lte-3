@@ -1,6 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { showHideMenu } from '../../components/AppUIReducer'
+import {
+  BG_DANGER,
+  BG_GREY_LIGHT,
+  BG_INFO,
+  BG_PRIMARY,
+  BG_SUCCESS, BG_WARNING,
+  BG_WHITE, CLEAR_LOGO_COLOR, CUSTOM_BRANDLOGO_VARIANTS, CUSTOM_DARKSIDEBAR_VARIANTS, CUSTOM_LIGHTSIDEBAR_VARIANTS,
+  showHideMenu
+} from '../../components/AppUIReducer'
+import ControlSidebar from './ControlSidebar'
 
 class Navigation extends React.Component {
   constructor (props) {
@@ -82,14 +91,54 @@ class Navigation extends React.Component {
   // };
 
   render () {
+    const { dispatch, appUIState } = this.props
+    var classColor = 'main-sidebar elevation-4 '
+    var classLogoColor = 'brand-link '
+    var classNameTreeView = 'nav-item has-treeview ' + (appUIState.isLoadMenu === false ? '' : 'menu-open')
+    var classNameDisplay = 'nav nav-treeview d' + (appUIState.isLoadMenu === false ? '-none' : '-block')
 
-    const { dispatch } = this.props
+    if (appUIState.darkLightColorSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-dark-primary'
+    } else if (appUIState.darkLightColorSidebar === BG_INFO && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-dark-info'
+    } else if (appUIState.darkLightColorSidebar === BG_SUCCESS && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-dark-success'
+    } else if (appUIState.darkLightColorSidebar === BG_DANGER && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-dark-danger'
+    } else if (appUIState.darkLightColorSidebar === BG_WARNING && appUIState.typeCustom === CUSTOM_DARKSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-dark-warning'
+    } else if (appUIState.darkLightColorSidebar === BG_PRIMARY && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-light-primary'
+    } else if (appUIState.darkLightColorSidebar === BG_INFO && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-light-info'
+    } else if (appUIState.darkLightColorSidebar === BG_SUCCESS && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-light-success'
+    } else if (appUIState.darkLightColorSidebar === BG_DANGER && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-light-danger'
+    } else if (appUIState.darkLightColorSidebar === BG_WARNING && appUIState.typeCustom === CUSTOM_LIGHTSIDEBAR_VARIANTS) {
+      classColor += 'sidebar-light-warning'
+    } else { classColor += 'sidebar-dark-primary' }
 
+    if (appUIState.brandLogoColorSidebar === BG_PRIMARY) {
+      classLogoColor += 'bg-primary'
+    } else if (appUIState.brandLogoColorSidebar === BG_INFO) {
+      classLogoColor += 'bg-info'
+    } else if (appUIState.brandLogoColorSidebar === BG_SUCCESS) {
+      classLogoColor += 'bg-success'
+    } else if (appUIState.brandLogoColorSidebar === BG_DANGER) {
+      classLogoColor += 'bg-danger'
+    } else if (appUIState.brandLogoColorSidebar === BG_WARNING) {
+      classLogoColor += 'bg-warning'
+    } else if (appUIState.brandLogoColorSidebar === BG_WHITE) {
+      classLogoColor += 'bg-white'
+    } else if (appUIState.brandLogoColorSidebar === BG_GREY_LIGHT) {
+      classLogoColor += 'bg-gray-light'
+    } else { classLogoColor }
     return (
       // <!-- Main Sidebar Container -->
-      <aside className='main-sidebar sidebar-dark-primary elevation-4'>
+      <aside className={classColor}>
         {/* // <!-- Brand Logo --> */}
-        <a href='index3.html' className='brand-link'>
+        <a href='index3.html' className={classLogoColor}>
           <img src='dist/img/AdminLTELogo.png' alt='AdminLTE Logo' className='brand-image img-circle elevation-3'
             style={{ 'opacity': '.8' }} />
           <span className='brand-text font-weight-light'>AdminLTE 3</span>
@@ -103,7 +152,7 @@ class Navigation extends React.Component {
               <img src='dist/img/user2-160x160.jpg' className='img-circle elevation-2' alt='User Image' />
             </div>
             <div className='info'>
-                <a href='#' className='d-block'>Alexander Pierce</a>
+              <a href='#' className='d-block'>Alexander Pierce</a>
             </div>
           </div>
 
@@ -111,7 +160,7 @@ class Navigation extends React.Component {
           <nav className='mt-2'>
             <ul className='nav nav-pills nav-sidebar flex-column' data-widget='treeview' role='menu' data-accordion='false'>
               {/* // <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library --> */}
-              <li className={'nav-item has-treeview ' + (this.props.loadMenu.isLoadMenu === false ? '' : 'menu-open')}>
+              <li className={classNameTreeView}>
                 <a className='nav-link active' onClick={() => dispatch(showHideMenu())}>
                   <i className='nav-icon fa fa-dashboard' />
                   <p>
@@ -119,7 +168,7 @@ class Navigation extends React.Component {
                     <i className='right fa fa-angle-left' />
                   </p>
                 </a>
-                <ul className={'nav nav-treeview d' + (this.props.loadMenu.isLoadMenu === false ? '-none' : '-block')}>
+                <ul className={classNameDisplay}>
                   <li className='nav-item'>
                     <a href='./index.html' className='nav-link active'>
                       <i className='fa fa-circle-o nav-icon' />
@@ -144,8 +193,11 @@ class Navigation extends React.Component {
           </nav>
           {/* // <!-- /.sidebar-menu --> */}
         </div>
+
         {/* // <!-- /.sidebar --> */}
+
       </aside>
+
     )
   };
 
@@ -326,7 +378,7 @@ class Navigation extends React.Component {
 
 const mapStateToProps = (state) => ({
 
-  loadMenu : state.appUIState
+  appUIState : state.appUIState
 })
 
 export default connect(mapStateToProps)(Navigation)
