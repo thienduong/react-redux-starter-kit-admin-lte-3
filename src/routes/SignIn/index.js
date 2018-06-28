@@ -1,5 +1,25 @@
 import { injectReducer } from '../../store/reducers'
 
+
+
+export default (store) => {
+  const onEnter = (nextState, transition) => {
+    // if router not home "/" check authenticate
+    if (nextState.location.pathname !== '/signin') {
+      var element = document.getElementsByClassName('hold-transition');
+      element.classList.add('login-page')
+      }
+    }
+  }
+export default (store) => {
+  const onLeave = (nextState, transition) => {
+    // if router not home "/" check authenticate
+    if (nextState.location.pathname !== '/') {
+      var element = document.getElementsByClassName('hold-transition');
+      element.classList.remove('login-page')
+    }
+  }
+}
 export default (store) => ({
   /*  Async getComponent is only invoked when route matches   */
   getComponent (nextState, cb) {
