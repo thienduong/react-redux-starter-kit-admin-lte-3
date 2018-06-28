@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SignInForm from './SignInForm'
+import { Link } from 'react-router'
 
 class SignIn extends React.Component {
   constructor (props) {
@@ -16,7 +17,7 @@ class SignIn extends React.Component {
     return (
       <div className='login-box'>
         <div className='login-logo'>
-          <a href='../../index2.html'><b>Admin</b>LTE</a>
+          <Link to='/' className='nav-link'><b>Admin</b>LTE</Link>
         </div>
         <div className='card'>
           <div className='card-body login-card-body'>
