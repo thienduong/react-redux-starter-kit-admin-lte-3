@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import {
   expandCollapseMenu,
@@ -40,7 +41,6 @@ class Header extends React.Component {
     return (
 
       <nav className={classColor}>
-        {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
           <li className='nav-item'>
             <a className='nav-link' onClick={() => dispatch(expandCollapseMenu())}>
@@ -53,6 +53,7 @@ class Header extends React.Component {
           <li className='nav-item d-none d-sm-inline-block'>
             <a href='#' className='nav-link'>Contact</a>
           </li>
+          <Link to='/signin' className='nav-link'>SignIn</Link>
         </ul>
 
         {/* // <!-- SEARCH FORM --> */}

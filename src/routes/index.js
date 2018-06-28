@@ -12,18 +12,24 @@ import SignInRoute from './SignIn'
 export const createRoutes = (store) => {
   const authenticate = (nextState, transition) => {
     // if router not home "/" check authenticate
+    document.getElementById('_body').classList.add('sidebar-mini')
     if (nextState.location.pathname !== '/') {
-      let {app} = store.getState();
+      let { app } = store.getState()
       if (!app || !app.acceptToken) {
-        transition('/signin');
+        transition('/signin')
       }
     }
   }
-  
+
+  const onLeave = (nextState, transition) => {
+    document.getElementById('_body').classList.remove('sidebar-mini')
+  }
+
   return [
     {
       path: '/',
       onEnter: authenticate,
+      onLeave: onLeave,
       component: PageLayout,
       indexRoute: Home,
       childRoutes: [
@@ -32,6 +38,7 @@ export const createRoutes = (store) => {
       ]
     },
     {
+
       path: '/signin',
       component: CommonLayout,
       indexRoute: SignInRoute(store)
