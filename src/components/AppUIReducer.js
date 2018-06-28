@@ -63,11 +63,11 @@ export function variantsNavbar (variantNavbar) {
 
   }
 }
-export function customColorLogo (brandLogoSidebar) {
+export function customColorLogo (brandLogoColorSidebar) {
   return {
 
     type: CUSTOM_BRANDLOGO_VARIANTS,
-    brandLogoSidebar
+    brandLogoColorSidebar
 
   }
 }
@@ -79,11 +79,11 @@ export function checkNavbarBorder () {
 
   }
 }
-export function customDarkLightSidebar (darkLightSidebar, typeCustom) {
+export function customDarkLightColorSidebar (darkLightColorSidebar, typeCustom) {
   return {
 
     type: CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS,
-    darkLightSidebar,
+    darkLightColorSidebar,
     typeCustom
 
   }
@@ -98,7 +98,7 @@ export const actions = {
   expandCollapseMenu,
   controlMenu,
   variantsNavbar,
-  customDarkLightSidebar,
+  customDarkLightColorSidebar,
   customColorLogo,
   checkNavbarBorder
 
@@ -111,8 +111,8 @@ const ACTION_HANDLERS = {
   [COLLAPSE_MENU]: (state, action) => ({ ...state, isCollapseMenu: !state.isCollapseMenu }),
   [CONTROL_MENU]: (state, action) => ({ ...state, isCollapseControlSlidebar: !state.isCollapseControlSlidebar }),
   [NAVBAR_VARIANTS]: (state, action) => ({ ...state, variantNavbar: action.variantNavbar }),
-  [CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS]: (state, action) => ({ ...state, darkLightSidebar: action.darkLightSidebar, typeCustom: action.typeCustom }),
-  [CUSTOM_BRANDLOGO_VARIANTS]: (state, action) => ({ ...state, brandLogoSidebar: action.brandLogoSidebar }),
+  [CUSTOM_DARK_LIGHT_SIDEBAR_VARIANTS]: (state, action) => ({ ...state, darkLightColorSidebar: action.darkLightColorSidebar, typeCustom: action.typeCustom }),
+  [CUSTOM_BRANDLOGO_VARIANTS]: (state, action) => ({ ...state, brandLogoColorSidebar: action.brandLogoColorSidebar }),
   [CHECK_NAVBAR_BORDER]: (state, action) => ({ ...state, checkBorder: !state.checkBorder }),
   [SHOW_HIDE_MENU]: function (state, action) {
     debugger
@@ -159,8 +159,8 @@ const initialState = {
   isCollapseMenu: false,
   isCollapseControlSlidebar: false,
   variantNavbar: null,
-  darkLightSidebar: null,
-  brandLogoSidebar: null,
+  darkLightColorSidebar: null,
+  brandLogoColorSidebar: null,
   checkBorder: false,
   typeCustom : null,
   typeLoadMenu: null
