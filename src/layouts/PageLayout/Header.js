@@ -13,28 +13,7 @@ import { connect } from 'react-redux'
 class Header extends React.Component {
   constructor (props) {
     super(props)
-  }
-
-  ;
-
-  // pushMenu () {
-  //   var body = document.body
-  //   var coreLayouts = document.getElementsByClassName('core-layout')
-  //   var coreLayout = coreLayouts[0] || null
-  //   if (body.clientWidth > 768 && coreLayout) {
-  //     if (coreLayout.className.indexOf('sidebar-collapse') === -1) {
-  //       coreLayout.className += ' sidebar-collapse'
-  //     } else {
-  //       coreLayout.className = coreLayout.className.replace(' sidebar-collapse', '')
-  //     }
-  //   } else {
-  //     if (coreLayout.className.indexOf('sidebar-open') === -1) {
-  //       coreLayout.className += ' sidebar-open'
-  //     } else {
-  //       coreLayout.className = coreLayout.className.replace(' sidebar-open', '')
-  //     }
-  //   }
-  // };
+  };
 
   render () {
     const { dispatch, appUIState } = this.props
@@ -58,11 +37,8 @@ class Header extends React.Component {
 
     classColor += (appUIState.checkBorder === true ? '' : ' border-bottom')
 
-
-      // debugger
-
     return (
-        // <!-- Navbar -->
+
       <nav className={classColor}>
         {/* // <!-- Left navbar links --> */}
         <ul className='navbar-nav'>
@@ -185,8 +161,8 @@ class Header extends React.Component {
           </li>
         </ul>
       </nav>
-        // <!-- navbar -->
-      )
+
+    )
   }
   }
 

@@ -15,9 +15,7 @@ import {
 class Navigation extends React.Component {
   constructor (props) {
     super(props)
-  }
-
-;
+  };
 
   componentDidMount () {
     (function (global, factory) {
