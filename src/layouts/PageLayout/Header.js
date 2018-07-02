@@ -54,7 +54,10 @@ class Header extends React.Component {
             <a href='#' className='nav-link'>Contact</a>
           </li>
           <Link to='/signin' className='nav-link'>SignIn</Link>
+          <Link to='/users' className='nav-link'>User</Link>
+          <Link to='/products' className='nav-link'>Product</Link>
         </ul>
+
 
         {/* // <!-- SEARCH FORM --> */}
         <form className='form-inline ml-3'>
