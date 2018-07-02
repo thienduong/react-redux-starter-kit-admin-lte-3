@@ -7,16 +7,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  console.log('category state: ', state);
-  // return {
-  //   categories : state.category.categories,
-  //   state: state.category.state
-  // };
-
   return {
     user : state.user.users
   }
-  // return state.category;
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(User)

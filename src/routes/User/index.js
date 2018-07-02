@@ -22,7 +22,7 @@ export default (store) => {
          dependencies for bundling   */
         const User = require('./containers/UserContainer').default
         const reducer = require('./modules/user').default/*  Add the reducer to the store on key 'vendor'  */
-          injectReducer(store, { key: 'user', reducer })
+        injectReducer(store, { key: 'user', reducer })
 
         /*  Return getComponent   */
         cb(null, User)

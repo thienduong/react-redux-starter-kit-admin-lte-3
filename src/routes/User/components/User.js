@@ -7,7 +7,6 @@ class User extends React.Component {
   }
   render () {
     let userElement = this.props.user.map((item, index) => <tr key={index}>
-
       <td>{item.Id}</td>
       <td>{item.Email}</td>
       <td>{item.EmailConfirmed}</td>
@@ -32,9 +31,7 @@ class User extends React.Component {
               <th>PhoneNumberConfirmed</th>
               <th>AccessFailedCount</th>
               <th>UserName</th>
-
             </tr>
-
             {userElement}
           </table>
 
